@@ -1,0 +1,14 @@
+- hosts: all
+  vars: 
+     middle: "{{m}}"
+  tasks:
+    - name: setting hostname
+      hostname:
+        name: "{{m}}"
+      register: x
+      sudo: yes
+      ignore_errors: yes
+      with_items: m
+    - debug:
+        msg: "{{x}}"
+
